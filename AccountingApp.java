@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -21,6 +22,7 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.print.PrinterException;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -30,6 +32,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.text.MessageFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -43,6 +46,10 @@ public class AccountingApp extends JFrame {
     private static final Color ACCENT = new Color(36, 116, 91);
     private static final Color BACKGROUND = new Color(246, 248, 250);
     private static final BigDecimal ZERO = BigDecimal.ZERO.setScale(2);
+
+    // Report layout: label column + two amount columns (fixed-width text prints cleanly)
+    private static final int LABEL_WIDTH = 36;
+    private static final int AMOUNT_WIDTH = 14;
 
     private final Path dataDirectory = Paths.get(
             System.getProperty("user.home"), ".acctg-final-project");
@@ -67,6 +74,15 @@ public class AccountingApp extends JFrame {
     private JTable journalTable;
     private JTable ledgerTable;
     private JTable accountsTable;
+
+    // Date filter (null = no limit) and report display areas
+    private final JTextField fromField = new JTextField(10);
+    private final JTextField toField = new JTextField(10);
+    private LocalDate filterFrom;
+    private LocalDate filterTo;
+    private final JTextArea trialBalanceArea = reportArea();
+    private final JTextArea incomeStatementArea = reportArea();
+    private final JTextArea balanceSheetArea = reportArea();
 
     private AccountingApp() throws IOException {
         super("Ledger & Journal | Accounting");
@@ -112,7 +128,12 @@ public class AccountingApp extends JFrame {
         content.setOpaque(false);
         content.setBorder(BorderFactory.createEmptyBorder(0, 20, 18, 20));
         content.add(buildEntryPanel(), BorderLayout.NORTH);
-        content.add(buildTabs(), BorderLayout.CENTER);
+
+        JPanel reports = new JPanel(new BorderLayout(0, 6));
+        reports.setOpaque(false);
+        reports.add(buildFilterBar(), BorderLayout.NORTH);
+        reports.add(buildTabs(), BorderLayout.CENTER);
+        content.add(reports, BorderLayout.CENTER);
         add(content, BorderLayout.CENTER);
     }
 
@@ -181,6 +202,62 @@ public class AccountingApp extends JFrame {
         panel.add(field, constraints);
     }
 
+    // ---------- Date filter ----------
+
+    private JPanel buildFilterBar() {
+        JPanel bar = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 4));
+        bar.setBackground(Color.WHITE);
+        bar.setBorder(BorderFactory.createLineBorder(new Color(224, 230, 236)));
+        JLabel label = new JLabel("Report date range (YYYY-MM-DD)   From:");
+        label.setFont(new Font("SansSerif", Font.BOLD, 12));
+        bar.add(label);
+        bar.add(fromField);
+        bar.add(new JLabel("To:"));
+        bar.add(toField);
+
+        JButton apply = new JButton("Apply filter");
+        apply.addActionListener(event -> applyFilter());
+        fromField.addActionListener(event -> applyFilter());
+        toField.addActionListener(event -> applyFilter());
+        JButton clear = new JButton("Clear");
+        clear.addActionListener(event -> {
+            fromField.setText("");
+            toField.setText("");
+            applyFilter();
+        });
+        bar.add(apply);
+        bar.add(clear);
+
+        JLabel note = new JLabel("Blank = no limit. Applies to Trial Balance, Income Statement and Balance Sheet.");
+        note.setForeground(new Color(92, 105, 118));
+        note.setFont(new Font("SansSerif", Font.PLAIN, 12));
+        bar.add(note);
+        return bar;
+    }
+
+    private void applyFilter() {
+        try {
+            LocalDate from = parseOptionalDate(fromField.getText());
+            LocalDate to = parseOptionalDate(toField.getText());
+            if (from != null && to != null && from.isAfter(to)) {
+                showError("The From date must not be after the To date.");
+                return;
+            }
+            filterFrom = from;
+            filterTo = to;
+            refreshReports();
+        } catch (DateTimeParseException exception) {
+            showError("Enter valid dates in YYYY-MM-DD format, or leave them blank.");
+        }
+    }
+
+    private static LocalDate parseOptionalDate(String text) {
+        String trimmed = text.trim();
+        return trimmed.isEmpty() ? null : LocalDate.parse(trimmed);
+    }
+
+    // ---------- Tabs ----------
+
     private JTabbedPane buildTabs() {
         JTabbedPane tabs = new JTabbedPane();
         journalTable = createTable(journalModel);
@@ -206,7 +283,24 @@ public class AccountingApp extends JFrame {
         ledgerPanel.add(new JScrollPane(ledgerTable), BorderLayout.CENTER);
         tabs.addTab("General Ledger", ledgerPanel);
         tabs.addTab("Account Balances", new JScrollPane(accountsTable));
+
+        tabs.addTab("Trial Balance", buildReportTab(trialBalanceArea, "Trial Balance"));
+        tabs.addTab("Income Statement", buildReportTab(incomeStatementArea, "Income Statement"));
+        tabs.addTab("Balance Sheet", buildReportTab(balanceSheetArea, "Balance Sheet"));
         return tabs;
+    }
+
+    private JPanel buildReportTab(JTextArea area, String title) {
+        JPanel panel = new JPanel(new BorderLayout(0, 8));
+        panel.setBackground(Color.WHITE);
+        JPanel top = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 8));
+        top.setBackground(Color.WHITE);
+        JButton printButton = new JButton("Print / Save as PDF");
+        printButton.addActionListener(event -> printReport(area, title));
+        top.add(printButton);
+        panel.add(top, BorderLayout.NORTH);
+        panel.add(new JScrollPane(area), BorderLayout.CENTER);
+        return panel;
     }
 
     private JTable createTable(DefaultTableModel model) {
@@ -217,6 +311,229 @@ public class AccountingApp extends JFrame {
         table.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 12));
         return table;
     }
+
+    // ---------- Print-friendly view ----------
+
+    private static JTextArea reportArea() {
+        JTextArea area = new JTextArea();
+        area.setEditable(false);
+        area.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 13));
+        area.setBackground(Color.WHITE);
+        area.setForeground(Color.BLACK);
+        area.setMargin(new Insets(14, 18, 14, 18));
+        return area;
+    }
+
+    // Plain black-on-white text, no buttons or colors. The standard print dialog
+    // also lets the user choose "Save as PDF" as the printer.
+    private void printReport(JTextArea area, String title) {
+        try {
+            area.print(new MessageFormat(title), new MessageFormat("Page {0}"));
+        } catch (PrinterException exception) {
+            showError("The report could not be printed: " + exception.getMessage());
+        }
+    }
+
+    // ---------- Balance calculations (shared by all reports) ----------
+
+    // Debits minus credits for an account within the date range (null = unbounded).
+    private BigDecimal net(Account account, LocalDate from, LocalDate to) {
+        BigDecimal total = ZERO;
+        for (JournalEntry entry : entries) {
+            if ((from != null && entry.date.isBefore(from))
+                    || (to != null && entry.date.isAfter(to))) {
+                continue;
+            }
+            if (entry.debitAccount.equals(account.name)) {
+                total = total.add(entry.amount);
+            }
+            if (entry.creditAccount.equals(account.name)) {
+                total = total.subtract(entry.amount);
+            }
+        }
+        return total;
+    }
+
+    // Balance on the account's normal side (positive = normal balance).
+    private BigDecimal balanceOf(Account account, LocalDate from, LocalDate to) {
+        BigDecimal net = net(account, from, to);
+        return account.type.isDebitNormal() ? net : net.negate();
+    }
+
+    private BigDecimal totalOfType(AccountType type, LocalDate from, LocalDate to) {
+        BigDecimal total = ZERO;
+        for (Account account : accounts) {
+            if (account.type == type) {
+                total = total.add(balanceOf(account, from, to));
+            }
+        }
+        return total;
+    }
+
+    // ---------- Report builders ----------
+
+    private void refreshReports() {
+        refreshTrialBalance();
+        refreshIncomeStatement();
+        refreshBalanceSheet();
+    }
+
+    private void refreshTrialBalance() {
+        StringBuilder text = new StringBuilder();
+        appendHeading(text, "TRIAL BALANCE", periodText(filterFrom, filterTo));
+        text.append(row("Account", "Debit", "Credit"));
+        text.append(rule());
+        BigDecimal totalDebits = ZERO;
+        BigDecimal totalCredits = ZERO;
+        for (Account account : accounts) {
+            BigDecimal net = net(account, filterFrom, filterTo);
+            BigDecimal debit = net.signum() > 0 ? net : ZERO;
+            BigDecimal credit = net.signum() < 0 ? net.negate() : ZERO;
+            text.append(row(account.name,
+                    net.signum() > 0 ? format(debit) : "",
+                    net.signum() < 0 ? format(credit) : ""));
+            totalDebits = totalDebits.add(debit);
+            totalCredits = totalCredits.add(credit);
+        }
+        text.append(rule());
+        text.append(row("Total", format(totalDebits), format(totalCredits)));
+        text.append("\n");
+        if (totalDebits.compareTo(totalCredits) == 0) {
+            text.append("Total debits equal total credits: BALANCED\n");
+        } else {
+            text.append("OUT OF BALANCE by " + format(totalDebits.subtract(totalCredits)) + "\n");
+        }
+        setReportText(trialBalanceArea, text);
+    }
+
+    private void refreshIncomeStatement() {
+        StringBuilder text = new StringBuilder();
+        appendHeading(text, "INCOME STATEMENT", periodText(filterFrom, filterTo));
+
+        text.append("Revenues\n");
+        for (Account account : accounts) {
+            if (account.type == AccountType.REVENUE) {
+                text.append(row("  " + account.name,
+                        format(balanceOf(account, filterFrom, filterTo)), ""));
+            }
+        }
+        BigDecimal revenues = totalOfType(AccountType.REVENUE, filterFrom, filterTo);
+        text.append(row("Total revenues", "", format(revenues)));
+        text.append("\n");
+
+        text.append("Expenses\n");
+        for (Account account : accounts) {
+            if (account.type == AccountType.EXPENSE) {
+                text.append(row("  " + account.name,
+                        format(balanceOf(account, filterFrom, filterTo)), ""));
+            }
+        }
+        BigDecimal expenses = totalOfType(AccountType.EXPENSE, filterFrom, filterTo);
+        text.append(row("Total expenses", "", format(expenses)));
+        text.append(rule());
+        text.append(row("Net income (loss)", "", format(revenues.subtract(expenses))));
+        setReportText(incomeStatementArea, text);
+    }
+
+    private void refreshBalanceSheet() {
+        // A balance sheet is a point in time: everything up to the "To" date.
+        LocalDate asOf = filterTo;
+        StringBuilder text = new StringBuilder();
+        appendHeading(text, "BALANCE SHEET",
+                asOf == null ? "As of all dates" : "As of " + asOf);
+
+        text.append("Assets\n");
+        for (Account account : accounts) {
+            if (account.type == AccountType.ASSET) {
+                text.append(row("  " + account.name, format(balanceOf(account, null, asOf)), ""));
+            }
+        }
+        BigDecimal assets = totalOfType(AccountType.ASSET, null, asOf);
+        text.append(row("Total assets", "", format(assets)));
+        text.append("\n");
+
+        text.append("Liabilities\n");
+        for (Account account : accounts) {
+            if (account.type == AccountType.LIABILITY) {
+                text.append(row("  " + account.name, format(balanceOf(account, null, asOf)), ""));
+            }
+        }
+        BigDecimal liabilities = totalOfType(AccountType.LIABILITY, null, asOf);
+        text.append(row("Total liabilities", "", format(liabilities)));
+        text.append("\n");
+
+        text.append("Equity\n");
+        for (Account account : accounts) {
+            if (account.type == AccountType.EQUITY) {
+                text.append(row("  " + account.name, format(balanceOf(account, null, asOf)), ""));
+            }
+        }
+        for (Account account : accounts) {
+            if (account.type == AccountType.CONTRA_EQUITY) {
+                text.append(row("  Less: " + account.name,
+                        format(balanceOf(account, null, asOf).negate()), ""));
+            }
+        }
+        // Books are not closed, so net income to date is added to equity.
+        BigDecimal netIncome = totalOfType(AccountType.REVENUE, null, asOf)
+                .subtract(totalOfType(AccountType.EXPENSE, null, asOf));
+        text.append(row("  Net income to date", format(netIncome), ""));
+        BigDecimal equity = totalOfType(AccountType.EQUITY, null, asOf)
+                .subtract(totalOfType(AccountType.CONTRA_EQUITY, null, asOf))
+                .add(netIncome);
+        text.append(row("Total equity", "", format(equity)));
+        text.append(rule());
+        BigDecimal liabilitiesAndEquity = liabilities.add(equity);
+        text.append(row("Total liabilities and equity", "", format(liabilitiesAndEquity)));
+        text.append("\n");
+        if (assets.compareTo(liabilitiesAndEquity) == 0) {
+            text.append("Assets equal liabilities plus equity: BALANCED\n");
+        } else {
+            text.append("OUT OF BALANCE by " + format(assets.subtract(liabilitiesAndEquity)) + "\n");
+        }
+        setReportText(balanceSheetArea, text);
+    }
+
+    private static void setReportText(JTextArea area, StringBuilder text) {
+        area.setText(text.toString());
+        area.setCaretPosition(0);
+    }
+
+    private static void appendHeading(StringBuilder text, String title, String period) {
+        text.append(title).append("\n");
+        text.append(period).append("\n");
+        text.append(rule()).append("\n");
+    }
+
+    private static String periodText(LocalDate from, LocalDate to) {
+        if (from == null && to == null) {
+            return "For all dates";
+        }
+        if (from == null) {
+            return "Through " + to;
+        }
+        if (to == null) {
+            return "From " + from;
+        }
+        return "For the period " + from + " to " + to;
+    }
+
+    private static String row(String label, String first, String second) {
+        String shortLabel = label.length() > LABEL_WIDTH - 1
+                ? label.substring(0, LABEL_WIDTH - 1) : label;
+        return String.format("%-" + LABEL_WIDTH + "s%" + AMOUNT_WIDTH + "s%" + AMOUNT_WIDTH + "s%n",
+                shortLabel, first, second);
+    }
+
+    private static String rule() {
+        StringBuilder line = new StringBuilder();
+        for (int i = 0; i < LABEL_WIDTH + 2 * AMOUNT_WIDTH; i++) {
+            line.append('-');
+        }
+        return line.append("\n").toString();
+    }
+
+    // ---------- Posting and accounts ----------
 
     private void postTransaction() {
         try {
@@ -344,6 +661,7 @@ public class AccountingApp extends JFrame {
                     format(credits), format(balance)});
         }
         refreshLedger();
+        refreshReports();
     }
 
     private void refreshLedger() {
@@ -399,6 +717,8 @@ public class AccountingApp extends JFrame {
             }
         }
     }
+
+    // ---------- File storage ----------
 
     private void loadAccounts() throws IOException {
         if (!Files.exists(accountsFile)) {
