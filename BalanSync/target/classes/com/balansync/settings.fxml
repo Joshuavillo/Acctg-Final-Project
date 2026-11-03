@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane minHeight="320.0" minWidth="360.0" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #F3FAF7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.balansync.MainController">
+   <left>
+      <fx:include fx:id="sidebar" source="sidebar.fxml" />
+   </left>
+   <center>
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background: #F3FAF7; -fx-background-color: #F3FAF7;">
+         <content>
+            <VBox spacing="12.0" style="-fx-background-color: #F3FAF7;">
+               <padding>
+                  <Insets bottom="24.0" left="28.0" right="28.0" top="28.0" />
+               </padding>
+               <children>
+                  <Label style="-fx-text-fill: #1B5E20; -fx-font-size: 26px; -fx-font-weight: bold;" text="Settings" />
+                  <Label style="-fx-text-fill: #64748B; -fx-font-size: 14px;" text="Application settings will be available here." wrapText="true" />
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>

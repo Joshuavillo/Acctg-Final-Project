@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="sidebar" minWidth="74.0" prefWidth="220.0" spacing="6.0" style="-fx-background-color: #123D2D; -fx-padding: 15; -fx-spacing: 6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.balansync.MainController">
+   <children>
+      <HBox fx:id="brandHeader" prefHeight="84.0" prefWidth="200.0" spacing="20.0">
+         <children>
+            <StackPane fx:id="brandLogo" prefHeight="0.0" prefWidth="62.0">
+               <children>
+                  <SVGPath content="M3 21C7 16 9 11 13 7C17 3 22 3 27 2C27 8 25 14 20 18C16 22 10 23 5 22C13 17 18 12 23 6C17 11 11 16 3 21Z" fill="WHITE" scaleX="2.0" scaleY="2.0" stroke="WHITE" />
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </StackPane>
+            <VBox fx:id="brandDetails" prefHeight="85.0" prefWidth="220.0" spacing="2.0">
+               <children>
+                  <Label alignment="TOP_LEFT" style="-fx-text-fill: white;" text="BalanSync">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="TOP_LEFT" style="-fx-text-fill: #E2F3EA;" text="Accounting System">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </VBox>
+         </children>
+      </HBox>
+      <Separator maxWidth="244.0" prefWidth="240.0" style="-fx-background-color: #E5E1F5; -fx-padding: 0;" />
+      <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <Button fx:id="dashboardButton" maxWidth="1.7976931348623157E308" minHeight="44.0" mnemonicParsing="false" onAction="#showDashboard" prefHeight="42.0" prefWidth="190.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 15px; -fx-alignment: CENTER_LEFT; -fx-padding: 10; -fx-background-radius: 8; -fx-cursor: hand;" text="Dashboard">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <StackPane prefHeight="23.0" prefWidth="23.0">
+                     <children>
+                        <SVGPath content="M3 10L12 3L21 10V20H14V14H10V20H3Z" fill="WHITE" stroke="TRANSPARENT" />
+                     </children>
+                  </StackPane>
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <Button fx:id="journalEntriesButton" maxWidth="1.7976931348623157E308" minHeight="44.0" mnemonicParsing="false" onAction="#showJournalEntries" prefHeight="42.0" prefWidth="190.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 15px; -fx-alignment: CENTER_LEFT; -fx-padding: 10; -fx-background-radius: 8; -fx-cursor: hand;" text="Journal Entries">
+               <graphic>
+                  <StackPane prefHeight="23.0" prefWidth="23.0">
+                     <children>
+                        <SVGPath content="M5 3 H19 V21 H5 ZM8 8 H10M13 8 H16M8 12 H10M13 12 H16M8 16 H10M13 16 H16" fill="TRANSPARENT" stroke="WHITE" />
+                     </children>
+                  </StackPane>
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <Button fx:id="generalLedgerButton" maxWidth="1.7976931348623157E308" minHeight="44.0" mnemonicParsing="false" onAction="#showGeneralLedger" prefHeight="42.0" prefWidth="190.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 15px; -fx-alignment: CENTER_LEFT; -fx-padding: 10; -fx-background-radius: 8; -fx-cursor: hand;" text="General Ledger">
+               <graphic>
+                  <StackPane prefHeight="23.0" prefWidth="23.0">
+                     <children>
+                        <SVGPath content="M5 3H19V21H5ZM9 7H15M9 11H15M9 15H15M7 7H7.1M7 11H7.1M7 15H7.1" fill="TRANSPARENT" stroke="WHITE" />
+                     </children>
+                  </StackPane>
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <Button fx:id="adjustmentsButton" maxWidth="1.7976931348623157E308" minHeight="44.0" mnemonicParsing="false" onAction="#showAdjustments" prefHeight="42.0" prefWidth="190.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 15px; -fx-alignment: CENTER_LEFT; -fx-padding: 10; -fx-background-radius: 8; -fx-cursor: hand;" text="Adjustments">
+               <graphic>
+                  <StackPane prefHeight="23.0" prefWidth="23.0">
+                     <children>
+                        <SVGPath content="M4 16L15 5L19 9L8 20L3 21ZM13 7L17 11" fill="TRANSPARENT" stroke="WHITE" strokeWidth="2.0" />
+                     </children>
+                  </StackPane>
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <Button fx:id="chartOfAccountsButton" maxWidth="1.7976931348623157E308" minHeight="44.0" mnemonicParsing="false" onAction="#showChartOfAccounts" prefHeight="42.0" prefWidth="190.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 15px; -fx-alignment: CENTER_LEFT; -fx-padding: 10; -fx-background-radius: 8; -fx-cursor: hand;" text="Chart of Accounts">
+               <graphic>
+                  <StackPane prefHeight="23.0" prefWidth="23.0">
+                     <children>
+                        <SVGPath content="M3 6H10L12 8H21V19H3ZM3 10H21M7 13H17" fill="TRANSPARENT" stroke="WHITE" />
+                     </children>
+                  </StackPane>
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <Button fx:id="reportsButton" maxWidth="1.7976931348623157E308" minHeight="44.0" mnemonicParsing="false" onAction="#showReports" prefHeight="42.0" prefWidth="190.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 15px; -fx-alignment: CENTER_LEFT; -fx-padding: 10; -fx-background-radius: 8; -fx-cursor: hand;" text="Reports">
+               <graphic>
+                  <StackPane prefHeight="23.0" prefWidth="23.0">
+                     <children>
+                        <SVGPath content="M4 20V12H8V20ZM10 20V7H14V20ZM16 20V3H20V20Z" fill="TRANSPARENT" stroke="WHITE" />
+                     </children>
+                  </StackPane>
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <Button fx:id="settingsButton" maxWidth="1.7976931348623157E308" minHeight="44.0" mnemonicParsing="false" onAction="#showSettings" prefHeight="42.0" prefWidth="190.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 15px; -fx-alignment: CENTER_LEFT; -fx-padding: 10; -fx-background-radius: 8; -fx-cursor: hand;" text="Settings">
+               <graphic>
+                  <StackPane prefHeight="23.0" prefWidth="23.0">
+                     <children>
+                        <SVGPath content="M12 3L14 4L16 3L18 6L21 7L20 10L21 12L20 15L21 17L18 18L16 21L14 20L12 21L10 20L8 21L6 18L3 17L4 15L3 12L4 10L3 7L6 6L8 3L10 4ZM12 9A3 3 0 1 0 12 15A3 3 0 0 0 12 9Z" fill="TRANSPARENT" stroke="WHITE" />
+                     </children>
+                  </StackPane>
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
+      <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+      <Separator maxWidth="244.0" prefWidth="200.0" style="-fx-background-color: #E5E1F5;" />
+      <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <Button fx:id="logoutButton" maxWidth="1.7976931348623157E308" minHeight="44.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="190.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 15px; -fx-alignment: CENTER_LEFT; -fx-padding: 10; -fx-background-radius: 8; -fx-cursor: hand;" text="Log Out">
+               <graphic>
+                  <StackPane prefHeight="23.0" prefWidth="23.0">
+                     <children>
+                        <SVGPath content="M10 4H20V20H10M14 12H3M7 8L3 12L7 16" fill="TRANSPARENT" stroke="WHITE" strokeWidth="2.0" />
+                     </children>
+                  </StackPane>
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</VBox>

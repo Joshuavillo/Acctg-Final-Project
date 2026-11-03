@@ -40,7 +40,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-@SuppressWarnings("serial")
+@SuppressWarnings("")
 public class AccountingApp extends JFrame {
     private static final Color NAVY = new Color(31, 47, 70);
     private static final Color ACCENT = new Color(36, 116, 91);

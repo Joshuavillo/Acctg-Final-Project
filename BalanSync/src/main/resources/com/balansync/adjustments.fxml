@@ -1,0 +1,704 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane minHeight="320.0" minWidth="360.0" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #F3FAF7;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.balansync.MainController">
+   <left>
+      <fx:include fx:id="sidebar" source="sidebar.fxml" />
+   </left>
+   <center>
+      <ScrollPane fitToWidth="true" hbarPolicy="AS_NEEDED" vbarPolicy="AS_NEEDED" style="-fx-background-color: #F8F7FC; -fx-background: #F8F7FC;" BorderPane.alignment="CENTER">
+         <content>
+      <VBox maxWidth="1.7976931348623157E308" minWidth="900.0" spacing="12.0" style="-fx-background-color: #F8F7FC;">
+         <padding>
+            <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+         </padding>
+         <children>
+            <HBox alignment="CENTER_RIGHT" minHeight="44.0" prefHeight="44.0" spacing="10.0" style="-fx-padding: 0 10 0 0;">
+               <children>
+                  <StackPane prefHeight="36.0" prefWidth="49.0">
+                     <children>
+                        <Circle fill="#e4f5ee" radius="15.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                        <SVGPath content="M18 8A6 6 0 0 0 6 8C6 15 3 15 3 17H21C21 15 18 15 18 8ZM10 21H14" fill="TRANSPARENT" scaleX="0.7" scaleY="0.7" stroke="#123d2d" strokeWidth="2.0" />
+                     </children>
+                  </StackPane>
+                  <StackPane prefHeight="36.0" prefWidth="58.0">
+                     <children>
+                        <Circle fill="#123d2d" radius="18.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                        <SVGPath content="M12 12A4 4 0 1 0 12 4A4 4 0 0 0 12 12ZM4 20C4 16.5 7.5 14 12 14S20 16.5 20 20Z" fill="WHITE" stroke="TRANSPARENT" />
+                     </children>
+                  </StackPane>
+                  <Label style="-fx-text-fill: #1B5E20; -fx-font-size: 14px; -fx-font-weight: bold;" text="Account Name" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" minHeight="88.0" prefHeight="88.0" prefWidth="1190.0" spacing="8.0" style="-fx-background-color: #E4F5EE; -fx-background-radius: 10; -fx-padding: 6; -fx-border-color: #DCEFE7; -fx-border-radius: 10;">
+               <children>
+                  <StackPane prefHeight="70.0" prefWidth="47.0">
+                     <children>
+                        <SVGPath content="M12 3 V20M7 6 H17M5 6 L2 13 H8 ZM19 6 L16 13 H22 ZM5 13 C5 17 2 17 2 13M19 13 C19 17 16 17 16 13M8 20 H16M9 22 H15" fill="TRANSPARENT" opacity="0.79" scaleX="1.2" scaleY="1.2" stroke="#087a50" strokeWidth="1.5" translateX="3.0" translateY="-2.0" />
+                     </children>
+                  </StackPane>
+                  <VBox alignment="CENTER_LEFT" spacing="4.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label style="-fx-text-fill: #1B5E20; -fx-font-size: 22px; -fx-font-weight: bold;" text="Adjustments">
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                        <Label style="-fx-text-alignment: #355E4C; -fx-font-size: 12px;" text="Record adjusting entries and prepare your adjusted trial balance.">
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <StackPane alignment="CENTER_RIGHT" maxWidth="171.0" minWidth="171.0" prefHeight="76.0" prefWidth="171.0">
+                     <children>
+                        <SVGPath content="M58 100C48 88 27 76 13 55C2 38 1 20 2 5C25 10 43 22 54 42C60 52 63 65 64 79C64 48 72 17 108 2C115 30 108 57 88 76C76 88 67 96 65 100ZM58 100C55 80 47 62 34 48C30 68 39 88 58 100ZM58 100C62 78 64 61 64 45" fill="#a8dcc5" opacity="0.5" rotate="21.4" scaleX="1.0" scaleY="0.6" stroke="TRANSPARENT" />
+                     </children>
+                  </StackPane>
+               </children>
+            </HBox>
+            <GridPane alignment="CENTER_LEFT" hgap="14.0" maxWidth="1.7976931348623157E308" prefHeight="94.0" prefWidth="1190.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <VBox alignment="CENTER_LEFT" prefHeight="120.0" prefWidth="260.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-border-color: #CDE5D3; -fx-border-radius: 10; -fx-padding: 8; -fx-spacing: 0; -fx-pref-height: 120px;">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <StackPane prefHeight="46.0" prefWidth="40.0">
+                                 <children>
+                                    <Circle fill="#e4f5ee" radius="23.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                    <SVGPath content="M7 2 H15 L21 8 V22 H7 ZM15 2 V8 H21M11 13 H17M11 17 H17" fill="TRANSPARENT" stroke="#087a50" strokeWidth="2.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="3.0" />
+                                 </padding>
+                              </StackPane>
+                              <Label style="-fx-text-fill: #64748B; -fx-font-size: 13px;" text="Unadjusted Trial Balance" />
+                           </children>
+                        </HBox>
+                        <Label style="-fx-text-fill: #1B5E20; -fx-font-size: 22px; -fx-font-weight: bold;" text="₱0.00">
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding></Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER_LEFT" prefHeight="120.0" prefWidth="260.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-border-color: #CDE5D3; -fx-padding: 8; -fx-spacing: 0; -fx-border-radius: 10; -fx-pref-height: 120;" GridPane.columnIndex="1">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <StackPane prefHeight="46.0" prefWidth="40.0">
+                                 <children>
+                                    <Circle fill="#e4f5ee" radius="23.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                    <SVGPath content="M4 6 H20 M4 12 H20 M4 18 H20 M8 4 V8 M15 10 V14 M10 16 V20" fill="TRANSPARENT" stroke="#087a50" strokeWidth="2.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="3.0" />
+                                 </padding>
+                              </StackPane>
+                              <Label style="-fx-text-fill: #64748B; -fx-font-size: 13px;" text="Total Adjustments" />
+                           </children>
+                        </HBox>
+                        <Label style="-fx-text-fill: #1B5E20; -fx-font-size: 22px; -fx-font-weight: bold;" text="₱0.00">
+                           <padding>
+                              <Insets left="45.0" />
+                           </padding></Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER_LEFT" prefHeight="120.0" prefWidth="260.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #CDE5D3; -fx-background-radius: 10; -fx-border-radius: 10; -fx-padding: 8;" GridPane.columnIndex="2">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <StackPane prefHeight="46.0" prefWidth="40.0">
+                                 <children>
+                                    <Circle fill="#e4f5ee" radius="23.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                    <SVGPath content="M5 3 H19 A2 2 0 0 1 21 5 V19 A2 2 0 0 1 19 21 H5 A2 2 0 0 1 3 19 V5 A2 2 0 0 1 5 3 Z M7 6 H17 V9 H7 Z M7 12 H9 V14 H7 Z M11 12 H13 V14 H11 Z M15 12 H17 V14 H15 Z M7 16 H9 V18 H7 Z M11 16 H13 V18 H11 Z M15 16 H17 V18 H15 Z" fill="TRANSPARENT" stroke="#087a50" strokeWidth="2.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="3.0" />
+                                 </padding>
+                              </StackPane>
+                              <Label style="-fx-text-fill: #64748B; -fx-font-size: 13px;" text="Adjusted Trial Balance" />
+                           </children>
+                        </HBox>
+                        <Label style="-fx-font-weight: bold; -fx-font-size: 22px; -fx-text-fill: #1B5E20;" text="₱0.00">
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER_LEFT" prefHeight="120.0" prefWidth="260.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-border-color: #CDE5D3; -fx-border-radius: 10; -fx-padding: 8;" GridPane.columnIndex="3">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <StackPane prefHeight="46.0" prefWidth="40.0">
+                                 <children>
+                                    <Circle fill="#e4f5ee" radius="23.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                    <SVGPath content="M6 2H14L20 8V20A2 2 0 0 1 18 22H6A2 2 0 0 1 4 20V4A2 2 0 0 1 6 2ZM14 2V8H20M8 12H16M8 16H16" fill="TRANSPARENT" stroke="#087a50" strokeWidth="2.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="3.0" />
+                                 </padding>
+                              </StackPane>
+                              <Label style="-fx-text-fill: #64748B; -fx-font-size: 13px;" text="Adjustment Entries" />
+                           </children>
+                        </HBox>
+                        <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #1B5E20;" text="₱0.00">
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets top="35.0" />
+               </padding>
+            </GridPane>
+            <HBox minHeight="80.0" prefHeight="80.0" spacing="8.0" style="-fx-background-color: #F1FAF3; -fx-background-radius: 8; -fx-padding: 6; -fx-border-color: #CDE5D3;">
+               <children>
+                  <StackPane prefHeight="70.0" prefWidth="47.0">
+                     <children>
+                        <SVGPath content="M5 20C8 10 17 4 29 3C29 15 22 25 10 27C7 27 5 24 5 20ZM5 29C12 21 19 14 27 8" fill="#8bcfb0" opacity="0.79" scaleX="1.2" scaleY="1.2" stroke="#087a50" translateX="3.0" translateY="-2.0" />
+                        <SVGPath content="M4 25C3 16 7 9 17 6C17 16 12 23 4 25Z" fill="#b8e3d0" opacity="0.74" rotate="-22.8" scaleX="0.85" scaleY="0.85" stroke="#087a50" strokeWidth="1.2" translateX="-7.0" translateY="2.0" />
+                     </children>
+                  </StackPane>
+                  <VBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="241.0" spacing="4.0">
+                     <children>
+                        <Label style="-fx-text-fill: #1B5E20; -fx-font-size: 15px; -fx-font-weight: bold;" text="Accounting Period">
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                        <Label style="-fx-text-alignment: #355E4C; -fx-font-size: 12px;" text="Period">
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="39.0" style="-fx-text-fill: #1B5E20; -fx-font-size: 12px; -fx-font-weight: bold;" text="October 2026">
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="BOTTOM_LEFT" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label style="-fx-text-alignment: #355E4C; -fx-font-size: 12px;" text="Status" />
+                        <Label style="-fx-text-fill: #1B5E20; -fx-background-color: #D1FAE5; -fx-background-radius: 15; -fx-padding: 5 12 5 12;" text="In Progress" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox fx:id="adjustmentSectionTabs" minHeight="31.0" spacing="10.0">
+               <children>
+                  <Button id="adjustingEntriesTab" mnemonicParsing="false" onAction="#selectAdjustmentSection" prefWidth="150.0" style="-fx-background-color: #176B45; -fx-text-fill: white; -fx-background-radius: 7; -fx-font-weight: bold; -fx-cursor: hand;" text="Adjustment Entries">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Button>
+                  <Button id="adjustmentsTab" mnemonicParsing="false" onAction="#selectAdjustmentSection" prefWidth="130.0" style="-fx-background-color: #F1FAF6; -fx-text-fill: #006B5B; -fx-background-radius: 7; -fx-cursor: hand;" text="Adjustments">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Button>
+                  <Button id="unadjustedTrialBalanceTab" mnemonicParsing="false" onAction="#selectAdjustmentSection" prefWidth="180.0" style="-fx-background-color: #F1FAF6; -fx-text-fill: #006B5B; -fx-background-radius: 7; -fx-cursor: hand;" text="Unadjusted Trial Balance">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Button>
+                  <Button id="adjustedTrialBalanceTab" mnemonicParsing="false" onAction="#selectAdjustmentSection" prefWidth="175.0" style="-fx-background-color: #F1FAF6; -fx-text-fill: #006B5B; -fx-background-radius: 7; -fx-cursor: hand;" text="Adjusted Trial Balance">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="balanceSheetTab" id="balanceSheetTab" mnemonicParsing="false" onAction="#selectAdjustmentSection" prefWidth="130.0" style="-fx-background-color: #F1FAF6; -fx-text-fill: #006B5B; -fx-background-radius: 7; -fx-cursor: hand;" text="Balance Sheet">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Button>
+                  <Button id="worksheetTab" mnemonicParsing="false" onAction="#selectAdjustmentSection" prefWidth="170.0" style="-fx-background-color: #F1FAF6; -fx-text-fill: #006B5B; -fx-background-radius: 7; -fx-cursor: hand;" text="12-Column Worksheet">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Button>
+                  <Button id="closingEntriesTab" mnemonicParsing="false" onAction="#selectAdjustmentSection" prefWidth="130.0" style="-fx-background-color: #F1FAF6; -fx-text-fill: #006B5B; -fx-background-radius: 7; -fx-cursor: hand;" text="Closing Entries">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="TOP_LEFT" prefHeight="578.0" spacing="12.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <StackPane fx:id="adjustmentSectionContent" minWidth="0.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <VBox fx:id="adjustingEntriesSection" maxWidth="1.7976931348623157E308" minHeight="400.0" spacing="6.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-border-color: #CDE5D3; -fx-border-radius: 12; -fx-padding: 10;">
+                           <children>
+                              <HBox fillHeight="false" maxWidth="1.7976931348623157E308" prefHeight="30.0" VBox.vgrow="NEVER">
+                                 <children>
+                                    <Label style="-fx-text-fill: #176B45; -fx-font-weight: bold;" text="Adjustment Entries">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Region prefHeight="29.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+                                    <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #176B45; -fx-text-fill: #FFFFFF; -fx-background-radius: 7; -fx-font-weight: bold; -fx-font-size: 11;" text="Add Adjustment">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font>
+                                       <graphic>
+                                          <StackPane prefHeight="26.0" prefWidth="24.0">
+                                             <children>
+                                                <SVGPath content="M12 5v14M5 12h14" fill="#00000000" stroke="WHITE" strokeWidth="2.0" />
+                                             </children>
+                                          </StackPane>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="36.0" spacing="4.0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" minHeight="36.0" prefHeight="36.0" style="-fx-background-radius: 7; -fx-background-color: #FFFFFF; -fx-border-color: #CDE9DF; -fx-border-radius: 7; -fx-padding: 0 8 0 8;" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="25.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <SVGPath content="M 10 2 A 8 8 0 1 0 10 18 A 8 8 0 0 0 10 2 M 16 16 L 22 22" fill="TRANSPARENT" scaleX="0.6" scaleY="0.6" stroke="#006b5b" strokeWidth="1.5" />
+                                                <TextField fx:id="adjustmentAccountSearchField" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="210.0" promptText="Search account..." style="-fx-background-color: transparent; -fx-background-radius: 7; -fx-border-color: transparent; -fx-border-radius: 7; -fx-border-width: 1; -fx-font-size: 11; -fx-text-fill: #245B50; -fx-prompt-text-fill: #78939A;" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="adjustingEntriesTable" fixedCellSize="31.0" maxWidth="1.7976931348623157E308" style="-fx-background-color: #FFFFFF; -fx-border-color: #CDE9DF; -fx-border-radius: 7; -fx-background-radius: 7; -fx-font-size: 10;" VBox.vgrow="ALWAYS">
+                                <columns>
+                                  <TableColumn fx:id="adjustmentDateColumn" prefWidth="85.0" style="fx-background-color: #E5F6EE; fx-text-fill: #006B45;" text="Date" />
+                                  <TableColumn fx:id="adjustmentAccountColumn" prefWidth="180.0" text="Account" />
+                                    <TableColumn fx:id="adjustmentDescriptionColumn" prefWidth="225.0" text="Description" />
+                                    <TableColumn fx:id="adjustmentDebitColumn" prefWidth="110.0" text="Debit" />
+                                    <TableColumn fx:id="adjustmentCreditColumn" prefWidth="110.0" text="Credit" />
+                                    <TableColumn fx:id="adjustmentActionsColumn" prefWidth="110.0" text="Actions" />
+                                </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="worksheetSection" maxWidth="1.7976931348623157E308" minHeight="400.0" spacing="6.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-border-color: #CDE5D3; -fx-border-radius: 12; -fx-padding: 10;" visible="false" managed="false">
+                           <children>
+                              <HBox fillHeight="false" maxWidth="1.7976931348623157E308" prefHeight="30.0" VBox.vgrow="NEVER">
+                                  <children>
+                                    <Label style="-fx-text-fill: #176B45; -fx-font-weight: bold;" text="12-Column Worksheet">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Region prefHeight="29.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+                                    <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #176B45; -fx-text-fill: #FFFFFF; -fx-background-radius: 7; -fx-font-weight: bold; -fx-font-size: 11;" text="Add Adjustment">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font>
+                                       <graphic>
+                                          <StackPane prefHeight="26.0" prefWidth="24.0">
+                                             <children>
+                                                <SVGPath content="M12 5v14M5 12h14" fill="#00000000" stroke="WHITE" strokeWidth="2.0" />
+                                             </children>
+                                          </StackPane>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" minHeight="36.0" prefHeight="36.0" style="-fx-background-radius: 7; -fx-background-color: #FFFFFF; -fx-border-color: #CDE9DF; -fx-border-radius: 7; -fx-padding: 0 8 0 8;">
+                                 <children>
+                                    <SVGPath content="M 10 2 A 8 8 0 1 0 10 18 A 8 8 0 0 0 10 2 M 16 16 L 22 22" fill="TRANSPARENT" scaleX="0.6" scaleY="0.6" stroke="#006b5b" strokeWidth="1.5" />
+                                    <TextField fx:id="worksheetSearchField" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="210.0" promptText="Search worksheet..." style="-fx-background-color: transparent; -fx-background-radius: 7; -fx-border-color: transparent; -fx-border-radius: 7; -fx-border-width: 1; -fx-font-size: 11; -fx-text-fill: #245B50; -fx-prompt-text-fill: #78939A;" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="worksheetTable" fixedCellSize="31.0" maxWidth="1.7976931348623157E308" style="-fx-background-color: #FFFFFF; -fx-border-color: #CDE9DF; -fx-border-radius: 7; -fx-background-radius: 7; -fx-font-size: 10;" VBox.vgrow="ALWAYS">
+                                 <columns>
+                                    <TableColumn prefWidth="85.0" style="fx-background-color: #E5F6EE; fx-text-fill: #006B45;" text="Date" />
+                                    <TableColumn prefWidth="180.0" text="Account" />
+                                    <TableColumn prefWidth="225.0" text="Description" />
+                                    <TableColumn prefWidth="110.0" text="Debit" />
+                                    <TableColumn prefWidth="110.0" text="Credit" />
+                                    <TableColumn prefWidth="110.0" text="Actions" />
+                                 </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="unadjustedTrialBalanceSection" maxWidth="1.7976931348623157E308" minHeight="400.0" spacing="8.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-border-color: #CDE5D3; -fx-border-radius: 12; -fx-padding: 12;" visible="false" managed="false">
+                           <children>
+                              <Label style="-fx-text-fill: #176B45; -fx-font-weight: bold; -fx-font-size: 18;" text="Unadjusted Trial Balance" />
+                              <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" minHeight="36.0" prefHeight="36.0" style="-fx-background-radius: 7; -fx-background-color: #FFFFFF; -fx-border-color: #CDE9DF; -fx-border-radius: 7; -fx-padding: 0 8 0 8;">
+                                 <children>
+                                    <SVGPath content="M 10 2 A 8 8 0 1 0 10 18 A 8 8 0 0 0 10 2 M 16 16 L 22 22" fill="TRANSPARENT" scaleX="0.6" scaleY="0.6" stroke="#006b5b" strokeWidth="1.5" />
+                                    <TextField fx:id="unadjustedTrialBalanceSearchField" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="210.0" promptText="Search trial balance..." style="-fx-background-color: transparent; -fx-background-radius: 7; -fx-border-color: transparent; -fx-border-radius: 7; -fx-border-width: 1; -fx-font-size: 11; -fx-text-fill: #245B50; -fx-prompt-text-fill: #78939A;" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="unadjustedTrialBalanceTable" fixedCellSize="31.0" maxWidth="1.7976931348623157E308" style="-fx-background-color: #FFFFFF; -fx-border-color: #CDE9DF; -fx-border-radius: 7; -fx-background-radius: 7; -fx-font-size: 10;" VBox.vgrow="ALWAYS">
+                                 <columns>
+                                    <TableColumn prefWidth="160.0" text="Account Number" />
+                                    <TableColumn prefWidth="300.0" text="Account Name" />
+                                    <TableColumn prefWidth="180.0" text="Debit" />
+                                    <TableColumn prefWidth="180.0" text="Credit" />
+                                 </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="adjustmentsSection" maxWidth="1.7976931348623157E308" minHeight="400.0" spacing="8.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-border-color: #CDE5D3; -fx-border-radius: 12; -fx-padding: 12;" visible="false" managed="false">
+                           <children>
+                              <Label style="-fx-text-fill: #176B45; -fx-font-weight: bold; -fx-font-size: 18;" text="Adjustments" />
+                              <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" minHeight="36.0" prefHeight="36.0" style="-fx-background-radius: 7; -fx-background-color: #FFFFFF; -fx-border-color: #CDE9DF; -fx-border-radius: 7; -fx-padding: 0 8 0 8;">
+                                 <children>
+                                    <SVGPath content="M 10 2 A 8 8 0 1 0 10 18 A 8 8 0 0 0 10 2 M 16 16 L 22 22" fill="TRANSPARENT" scaleX="0.6" scaleY="0.6" stroke="#006b5b" strokeWidth="1.5" />
+                                    <TextField fx:id="adjustmentsSearchField" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="210.0" promptText="Search account..." style="-fx-background-color: transparent; -fx-background-radius: 7; -fx-border-color: transparent; -fx-border-radius: 7; -fx-border-width: 1; -fx-font-size: 11; -fx-text-fill: #245B50; -fx-prompt-text-fill: #78939A;" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="adjustmentsTable" fixedCellSize="31.0" maxWidth="1.7976931348623157E308" style="-fx-background-color: #FFFFFF; -fx-border-color: #CDE9DF; -fx-border-radius: 7; -fx-background-radius: 7; -fx-font-size: 10;" VBox.vgrow="ALWAYS">
+                                 <columns>
+                                    <TableColumn fx:id="adjustmentsDateColumn" prefWidth="100.0" text="Date" />
+                                    <TableColumn fx:id="adjustmentsAccountColumn" prefWidth="180.0" text="Account" />
+                                    <TableColumn fx:id="adjustmentsDescriptionColumn" prefWidth="300.0" text="Description" />
+                                    <TableColumn fx:id="adjustmentsDebitColumn" prefWidth="150.0" text="Debit" />
+                                    <TableColumn fx:id="adjustmentsCreditColumn" prefWidth="150.0" text="Credit" />
+                                    <TableColumn fx:id="adjustmentsActionsColumn" prefWidth="120.0" text="Actions" />
+                                 </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="adjustedTrialBalanceSection" maxWidth="1.7976931348623157E308" minHeight="400.0" spacing="8.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-border-color: #CDE5D3; -fx-border-radius: 12; -fx-padding: 12;" visible="false" managed="false">
+                           <children>
+                              <Label style="-fx-text-fill: #176B45; -fx-font-weight: bold; -fx-font-size: 18;" text="Adjusted Trial Balance" />
+                              <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" minHeight="36.0" prefHeight="36.0" style="-fx-background-radius: 7; -fx-background-color: #FFFFFF; -fx-border-color: #CDE9DF; -fx-border-radius: 7; -fx-padding: 0 8 0 8;">
+                                 <children>
+                                    <SVGPath content="M 10 2 A 8 8 0 1 0 10 18 A 8 8 0 0 0 10 2 M 16 16 L 22 22" fill="TRANSPARENT" scaleX="0.6" scaleY="0.6" stroke="#006b5b" strokeWidth="1.5" />
+                                    <TextField fx:id="adjustedTrialBalanceSearchField" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="210.0" promptText="Search trial balance..." style="-fx-background-color: transparent; -fx-background-radius: 7; -fx-border-color: transparent; -fx-border-radius: 7; -fx-border-width: 1; -fx-font-size: 11; -fx-text-fill: #245B50; -fx-prompt-text-fill: #78939A;" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="adjustedTrialBalanceTable" fixedCellSize="31.0" maxWidth="1.7976931348623157E308" style="-fx-background-color: #FFFFFF; -fx-border-color: #CDE9DF; -fx-border-radius: 7; -fx-background-radius: 7; -fx-font-size: 10;" VBox.vgrow="ALWAYS">
+                                 <columns>
+                                    <TableColumn prefWidth="160.0" text="Account Number" />
+                                    <TableColumn prefWidth="300.0" text="Account Name" />
+                                    <TableColumn prefWidth="180.0" text="Debit" />
+                                    <TableColumn prefWidth="180.0" text="Credit" />
+                                 </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="closingEntriesSection" maxWidth="1.7976931348623157E308" minHeight="400.0" spacing="8.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-border-color: #CDE5D3; -fx-border-radius: 12; -fx-padding: 12;" visible="false" managed="false">
+                           <children>
+                              <Label style="-fx-text-fill: #176B45; -fx-font-weight: bold; -fx-font-size: 18;" text="Closing Entries" />
+                              <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" minHeight="36.0" prefHeight="36.0" style="-fx-background-radius: 7; -fx-background-color: #FFFFFF; -fx-border-color: #CDE9DF; -fx-border-radius: 7; -fx-padding: 0 8 0 8;">
+                                 <children>
+                                    <SVGPath content="M 10 2 A 8 8 0 1 0 10 18 A 8 8 0 0 0 10 2 M 16 16 L 22 22" fill="TRANSPARENT" scaleX="0.6" scaleY="0.6" stroke="#006b5b" strokeWidth="1.5" />
+                                    <TextField fx:id="closingEntriesSearchField" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="210.0" promptText="Search closing entries..." style="-fx-background-color: transparent; -fx-background-radius: 7; -fx-border-color: transparent; -fx-border-radius: 7; -fx-border-width: 1; -fx-font-size: 11; -fx-text-fill: #245B50; -fx-prompt-text-fill: #78939A;" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="closingEntriesTable" fixedCellSize="31.0" maxWidth="1.7976931348623157E308" style="-fx-background-color: #FFFFFF; -fx-border-color: #CDE9DF; -fx-border-radius: 7; -fx-background-radius: 7; -fx-font-size: 10;" VBox.vgrow="ALWAYS">
+                                 <columns>
+                                    <TableColumn prefWidth="100.0" text="Date" />
+                                    <TableColumn prefWidth="180.0" text="Account" />
+                                    <TableColumn prefWidth="300.0" text="Description" />
+                                    <TableColumn prefWidth="150.0" text="Debit" />
+                                    <TableColumn prefWidth="150.0" text="Credit" />
+                                    <TableColumn prefWidth="120.0" text="Actions" />
+                                 </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                           </children>
+                        </VBox>
+                         <VBox fx:id="balanceSheetSection" maxWidth="1.7976931348623157E308" minHeight="400.0" spacing="8.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-border-color: #CDE5D3; -fx-border-radius: 12; -fx-padding: 12;" visible="false" managed="false">
+                           <children>
+                              <Label style="-fx-text-fill: #176B45; -fx-font-weight: bold; -fx-font-size: 18;" text="Balance Sheet" />
+                              <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" minHeight="36.0" prefHeight="36.0" style="-fx-background-radius: 7; -fx-background-color: #FFFFFF; -fx-border-color: #CDE9DF; -fx-border-radius: 7; -fx-padding: 0 8 0 8;">
+                                 <children>
+                                    <SVGPath content="M 10 2 A 8 8 0 1 0 10 18 A 8 8 0 0 0 10 2 M 16 16 L 22 22" fill="TRANSPARENT" scaleX="0.6" scaleY="0.6" stroke="#006b5b" strokeWidth="1.5" />
+                                    <TextField fx:id="balanceSheetSearchField" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="210.0" promptText="Search balance sheet..." style="-fx-background-color: transparent; -fx-background-radius: 7; -fx-border-color: transparent; -fx-border-radius: 7; -fx-border-width: 1; -fx-font-size: 11; -fx-text-fill: #245B50; -fx-prompt-text-fill: #78939A;" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="balanceSheetTable" fixedCellSize="31.0" maxWidth="1.7976931348623157E308" style="-fx-background-color: #FFFFFF; -fx-border-color: #CDE9DF; -fx-border-radius: 7; -fx-background-radius: 7; -fx-font-size: 10;" VBox.vgrow="ALWAYS">
+                                 <columns>
+                                    <TableColumn prefWidth="100.0" text="Date" />
+                                    <TableColumn prefWidth="180.0" text="Account" />
+                                    <TableColumn prefWidth="300.0" text="Description" />
+                                    <TableColumn prefWidth="150.0" text="Debit" />
+                                    <TableColumn prefWidth="150.0" text="Credit" />
+                                    <TableColumn prefWidth="120.0" text="Actions" />
+                                 </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                           </children>
+                        </VBox>
+                     </children>
+                  </StackPane>
+                  <VBox maxWidth="340.0" minWidth="300.0" prefWidth="330.0" spacing="12.0">
+                     <children>
+                        <VBox maxWidth="1.7976931348623157E308" spacing="10.0" style="-fx-padding: 10; -fx-background-color: #FFFFFF; -fx-border-color: #DCEFE7; -fx-border-radius: 10;">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="264.0" spacing="10.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <Label prefHeight="22.0" prefWidth="165.0" style="-fx-font-weight: bold; -fx-text-fill: #176B45;" text="Adjustment Summary">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Region prefHeight="22.0" prefWidth="48.0" />
+                                 </children>
+                              </HBox>
+                              <VBox alignment="CENTER_LEFT" prefHeight="206.0" prefWidth="291.0" spacing="6.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-color: #CDE9DF; -fx-border-radius: 8; -fx-padding: 5;">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <StackPane prefHeight="43.0" prefWidth="62.0">
+                                             <children>
+                                                <Circle fill="#e4f5ee" radius="18.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                                <SVGPath content="M7 2 H15 L21 8 V22 H7 ZM15 2 V8 H21M11 13 H17M11 17 H17" fill="TRANSPARENT" scaleX="0.8" scaleY="0.8" stroke="#087a50" strokeWidth="2.5" />
+                                             </children>
+                                          </StackPane>
+                                          <VBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="44.0" prefWidth="227.0">
+                                             <children>
+                                                <Label style="-fx-text-fill: #176B45;" text="Total Adjustments" />
+                                             </children>
+                                          </VBox>
+                                          <Label prefHeight="18.0" prefWidth="69.0" style="-fx-font-weight: bold; -fx-text-fill: #1B5E20;" text="₱0.00" />
+                                       </children>
+                                    </HBox>
+                                    <Separator prefWidth="200.0" />
+                                    <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <StackPane prefHeight="43.0" prefWidth="69.0">
+                                             <children>
+                                                <Circle fill="#e4f5ee" radius="18.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                                <SVGPath content="M6 2H14L20 8V20A2 2 0 0 1 18 22H6A2 2 0 0 1 4 20V4A2 2 0 0 1 6 2ZM14 2V8H20M8 12H16M8 16H16" fill="TRANSPARENT" scaleX="0.8" scaleY="0.8" stroke="#087a50" strokeWidth="2.5" />
+                                             </children>
+                                          </StackPane>
+                                          <VBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="48.0" prefWidth="266.0">
+                                             <children>
+                                                <Label style="-fx-text-fill: #176B45;" text="Number of Entries" />
+                                             </children>
+                                          </VBox>
+                                              <Label prefHeight="18.0" prefWidth="57.0" style="-fx-font-weight: bold; -fx-text-fill: #1B5E20;" text="0" />
+                                       </children>
+                                    </HBox>
+                                    <Separator prefWidth="200.0" />
+                                    <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <StackPane prefHeight="44.0" prefWidth="60.0">
+                                             <children>
+                                                <Circle fill="#e4f5ee" radius="18.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                                <SVGPath content="M12 8v4l3 2 M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z M12 2v2" fill="TRANSPARENT" scaleX="0.8" scaleY="0.8" stroke="#087a50" strokeWidth="2.5" />
+                                             </children>
+                                          </StackPane>
+                                          <VBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="48.0" prefWidth="266.0">
+                                             <children>
+                                                <Label style="-fx-text-fill: #176B45;" text="Last Update" />
+                                             </children>
+                                          </VBox>
+                                          <Label prefHeight="15.0" prefWidth="164.0" style="-fx-text-fill: #52718A;" text="October 2026">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        <VBox maxWidth="1.7976931348623157E308" spacing="6.0" style="-fx-padding: 10; -fx-background-color: #FFFFFF; -fx-border-color: #DCEFE7; -fx-border-radius: 10;">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="264.0" spacing="10.0">
+                                 <children>
+                                    <Label prefHeight="26.0" prefWidth="127.0" style="-fx-font-weight: bold; -fx-text-fill: #176B45;" text="Quick Actions">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="294.0" spacing="5.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #CDE5D3; -fx-background-radius: 6; -fx-border-radius: 6; -fx-padding: 4;">
+                                 <children>
+                                    <StackPane prefHeight="43.0" prefWidth="62.0">
+                                       <children>
+                                          <Circle fill="#e4f5ee" radius="18.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                          <SVGPath content="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z M8 8h8 M8 12h5" fill="TRANSPARENT" scaleX="0.8" scaleY="0.8" stroke="#087a50" strokeWidth="2.5" />
+                                       </children>
+                                    </StackPane>
+                                    <VBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="186.0">
+                                       <children>
+                                          <Label style="-fx-text-fill: #176B45;" text="View Adjusting Entries" />
+                                          <Label style="-fx-text-fill: #52718A;" text="Manage and edit adjusting entries">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                    <Button focusTraversable="false" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: #104D32;" text="›">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="25.0" layoutY="61.0" prefHeight="48.0" prefWidth="200.0" spacing="5.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #CDE5D3; -fx-background-radius: 6; -fx-border-radius: 6; -fx-padding: 4;">
+                                 <children>
+                                    <StackPane prefHeight="43.0" prefWidth="69.0">
+                                       <children>
+                                          <Circle fill="#e4f5ee" radius="18.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                          <SVGPath content="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2v6h6 M12 18v-6 M9 15l3-3 3 3" fill="TRANSPARENT" scaleX="0.8" scaleY="0.8" stroke="#087a50" strokeWidth="2.5" />
+                                       </children>
+                                    </StackPane>
+                                    <VBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="23.0" prefWidth="186.0">
+                                       <children>
+                                          <Label style="-fx-text-fill: #176B45;" text="Generate Worksheet" />
+                                          <Label style="-fx-text-fill: #52718A;" text="Create 12-column worksheet">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                    <Button focusTraversable="false" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: #104D32;" text="›">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="25.0" layoutY="120.0" prefHeight="48.0" prefWidth="200.0" spacing="5.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 6; -fx-border-color: #CDE5D3; -fx-border-radius: 6; -fx-padding: 4;">
+                                 <children>
+                                    <StackPane prefHeight="44.0" prefWidth="60.0">
+                                       <children>
+                                          <Circle fill="#e4f5ee" radius="18.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                          <SVGPath content="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4 M7 10l5 5 5-5 M12 15V3" fill="TRANSPARENT" scaleX="0.8" scaleY="0.8" stroke="#087a50" strokeWidth="2.5" />
+                                       </children>
+                                    </StackPane>
+                                    <VBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="27.0" prefWidth="186.0">
+                                       <children>
+                                          <Label style="-fx-text-fill: #176B45;" text="Export Report" />
+                                          <Label style="-fx-text-fill: #52718A;" text="Downioad as PDF or Excel">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                    <Button focusTraversable="false" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: #104D32;" text="›">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="25.0" layoutY="178.0" prefHeight="48.0" prefWidth="200.0" spacing="5.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 6; -fx-border-color: #CDE5D3; -fx-border-radius: 6; -fx-padding: 4;">
+                                 <children>
+                                    <StackPane prefHeight="44.0" prefWidth="69.0">
+                                       <children>
+                                          <Circle fill="#e4f5ee" radius="18.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                          <SVGPath content="M12 8v4l3 2 M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z M12 2v2" fill="TRANSPARENT" scaleX="0.8" scaleY="0.8" stroke="#087a50" strokeWidth="2.5" />
+                                       </children>
+                                    </StackPane>
+                                    <VBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="186.0">
+                                       <children>
+                                          <Label style="-fx-text-fill: #176B45;" text="View Financial Statements" />
+                                          <Label style="-fx-text-fill: #52718A;" text="Proceed to financial statements">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                    <Button focusTraversable="false" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: #104D32;" text="›">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <Separator prefWidth="200.0" />
+                              <VBox prefHeight="78.0" prefWidth="294.0" spacing="4.0" style="-fx-background-color: #E4F5EE; -fx-background-radius: 10; -fx-border-color: #DCEFE7; -fx-border-radius: 10; -fx-padding: 10;">
+                                 <children>
+                                    <Label style="-fx-font-weight: bold; -fx-text-fill: #104D32;" text="Note">
+                                       <graphic>
+                                          <StackPane prefHeight="34.0" prefWidth="29.0">
+                                             <children>
+                                                <SVGPath content="M12 2A10 10 0 1 0 12 22A10 10 0 1 0 12 2ZM11 10H13V17H11ZM12 6A1.25 1.25 0 1 0 12 8.5A1.25 1.25 0 1 0 12 6Z" fill="#087447" scaleX="0.8" scaleY="0.8" />
+                                             </children>
+                                          </StackPane>
+                                       </graphic>
+                                    </Label>
+                                    <Label prefHeight="38.0" prefWidth="271.0" text="After completing the adjustments, make sure to review the adjusted &#10;trial balance before generating your financial statements.&#10;" textAlignment="JUSTIFY">
+                                       <font>
+                                          <Font size="8.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="30.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>

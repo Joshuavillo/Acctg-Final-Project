@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane minHeight="320.0" minWidth="360.0" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #F3FAF7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <VBox fx:id="sidebar" minWidth="74.0" prefWidth="220.0" spacing="6.0" style="-fx-background-color: #123D2D; -fx-padding: 15; -fx-spacing: 6;" BorderPane.alignment="CENTER">
+         <children>
+            <HBox fx:id="brandHeader" prefHeight="84.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <StackPane prefHeight="0.0" prefWidth="62.0">
+                     <children>
+                        <SVGPath content="M3 21C7 16 9 11 13 7C17 3 22 3 27 2C27 8 25 14 20 18C16 22 10 23 5 22C13 17 18 12 23 6C17 11 11 16 3 21Z" fill="WHITE" scaleX="2.0" scaleY="2.0" stroke="WHITE" />
+                     </children>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </StackPane>
+                  <VBox fx:id="brandDetails" prefHeight="85.0" prefWidth="220.0" spacing="2.0">
+                     <children>
+                        <Label alignment="TOP_LEFT" style="-fx-text-fill: white;" text="BalanSync">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="TOP_LEFT" style="-fx-text-fill: #E2F3EA;" text="Accounting System" textFill="#64748b">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </HBox>
+            <Separator maxWidth="244.0" prefWidth="240.0" style="-fx-background-color: #E5E1F5; -fx-padding: 0;" />
+            <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Button maxWidth="244.0" minHeight="44.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="244.0" style="-fx-background-color: #267A56; -fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; -fx-alignment: CENTER_LEFT; -fx-padding: 10; -fx-background-radius: 8; -fx-cursor: hand;" text="Dashboard">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <StackPane prefHeight="23.0" prefWidth="23.0">
+                           <children>
+                              <SVGPath content="M3 10L12 3L21 10V20H14V14H10V20H3Z" fill="WHITE" stroke="TRANSPARENT" strokeWidth="2.0" />
+                           </children>
+                        </StackPane>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="244.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT; -fx-font-size: 15px; -fx-background-radius: 8; -fx-padding: 10; -fx-text-fill: white; -fx-cursor: hand;" text="Journal Entries">
+                     <graphic>
+                        <StackPane prefHeight="23.0" prefWidth="23.0">
+                           <children>
+                              <SVGPath content="M5 3 H19 V21 H5 ZM8 8 H10M13 8 H16M8 12 H10M13 12 H16M8 16 H10M13 16 H16" fill="TRANSPARENT" stroke="WHITE" />
+                           </children>
+                        </StackPane>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="244.0" style="-fx-alignment: CENTER_LEFT; -fx-background-color: transparent; -fx-background-radius: 8; -fx-font-size: 15px; -fx-padding: 10; -fx-text-fill: white; -fx-cursor: hand;" text="General Legder">
+                     <graphic>
+                        <StackPane prefHeight="23.0" prefWidth="23.0">
+                           <children>
+                              <SVGPath content="M5 3H19V21H5ZM9 7H15M9 11H15M9 15H15M7 7H7.1M7 11H7.1M7 15H7.1" fill="TRANSPARENT" stroke="WHITE" />
+                           </children>
+                        </StackPane>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="42.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 15PX; -fx-padding: 10; -fx-cursor: hand; -fx-background-radius: 8; -fx-alignment: CENTER_LEFT;" text="Adjustments">
+                     <graphic>
+                        <StackPane prefHeight="23.0" prefWidth="23.0">
+                           <children>
+                              <SVGPath content="M4 16L15 5L19 9L8 20L3 21ZM13 7L17 11" fill="TRANSPARENT" stroke="WHITE" strokeWidth="2.0" />
+                           </children>
+                        </StackPane>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="244.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT; -fx-background-radius: 8; -fx-font-size: 15px; -fx-padding: 10; -fx-text-fill: white; -fx-cursor: hand;" text="Chart of Accounts">
+                     <graphic>
+                        <StackPane prefHeight="23.0" prefWidth="23.0">
+                           <children>
+                              <SVGPath content="M3 6H10L12 8H21V19H3ZM3 10H21M7 13H17" fill="TRANSPARENT" stroke="WHITE" />
+                           </children>
+                        </StackPane>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="244.0" style="-fx-alignment: CENTER_LEFT; -fx-background-color: transparent; -fx-background-radius: 8; -fx-font-size: 15px; -fx-padding: 10; -fx-text-fill: white; -fx-cursor: hand;" text="Reports">
+                     <graphic>
+                        <StackPane prefHeight="23.0" prefWidth="23.0">
+                           <children>
+                              <SVGPath content="M4 20V12H8V20ZM10 20V7H14V20ZM16 20V3H20V20Z" fill="TRANSPARENT" stroke="WHITE" />
+                           </children>
+                        </StackPane>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="244.0" style="-fx-alignment: CENTER_LEFT; -fx-background-color: transparent; -fx-background-radius: 8; -fx-font-size: 15px; -fx-padding: 10; -fx-cursor: hand; -fx-text-fill: white;" text="Settings">
+                     <graphic>
+                        <StackPane prefHeight="23.0" prefWidth="23.0">
+                           <children>
+                              <SVGPath content="M12 3L14 4L16 3L18 6L21 7L20 10L21 12L20 15L21 17L18 18L16 21L14 20L12 21L10 20L8 21L6 18L3 17L4 15L3 12L4 10L3 7L6 6L8 3L10 4ZM12 9A3 3 0 1 0 12 15A3 3 0 0 0 12 9Z" fill="TRANSPARENT" stroke="WHITE" />
+                           </children>
+                        </StackPane>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+            <Separator maxWidth="244.0" prefWidth="200.0" style="-fx-background-color: #E5E1F5;" />
+            <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="244.0" style="-fx-alignment: CENTER_LEFT; -fx-background-color: transparent; -fx-text-fill: white; -fx-padding: 12 16 12 16; -fx-cursor: hand; -fx-background-radius: 8; -fx-font-size: 15px;" text=" Log Out">
+                     <graphic>
+                        <StackPane prefHeight="23.0" prefWidth="23.0">
+                           <children>
+                              <SVGPath content="M10 4H20V20H10M14 12H3M7 8L3 12L7 16" fill="TRANSPARENT" stroke="WHITE" strokeWidth="2.0" />
+                           </children>
+                        </StackPane>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: #F8F7FC; -fx-background: #F8F7FC;" vbarPolicy="AS_NEEDED" BorderPane.alignment="CENTER">
+         <content>
+      <VBox fx:id="dashboardContent" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="906.0" spacing="10.0" style="-fx-background-color: #F8F7FC;">
+         <padding>
+            <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+         </padding>
+         <children>
+            <HBox alignment="CENTER_RIGHT" prefHeight="13.0" prefWidth="894.0" spacing="4.0" style="-fx-padding: 0 10 0 0;">
+               <children>
+                  <StackPane prefHeight="36.0" prefWidth="49.0">
+                     <children>
+                        <Circle fill="#e4f5ee" radius="15.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                        <SVGPath content="M18 8A6 6 0 0 0 6 8C6 15 3 15 3 17H21C21 15 18 15 18 8ZM10 21H14" fill="TRANSPARENT" scaleX="0.7" scaleY="0.7" stroke="#123d2d" strokeWidth="2.0" />
+                     </children>
+                  </StackPane>
+                  <StackPane prefHeight="36.0" prefWidth="58.0">
+                     <children>
+                        <Circle fill="#123d2d" radius="18.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                        <SVGPath content="M12 12A4 4 0 1 0 12 4A4 4 0 0 0 12 12ZM4 20C4 16.5 7.5 14 12 14S20 16.5 20 20Z" fill="WHITE" stroke="TRANSPARENT" />
+                     </children>
+                  </StackPane>
+                  <Label style="-fx-text-fill: #1B5E20; -fx-font-size: 14px; -fx-font-weight: bold;" text="Account Name" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="88.0" prefWidth="200.0" spacing="8.0" style="-fx-background-color: #E4F5EE; -fx-background-radius: 10; -fx-padding: 6; -fx-border-color: #DCEFE7;">
+               <children>
+                  <StackPane prefHeight="70.0" prefWidth="47.0">
+                     <children>
+                        <SVGPath content="M5 20C8 10 17 4 29 3C29 15 22 25 10 27C7 27 5 24 5 20ZM5 29C12 21 19 14 27 8" fill="#8bcfb0" opacity="0.79" scaleX="1.2" scaleY="1.2" stroke="#087a50" translateX="3.0" translateY="-2.0" />
+                        <SVGPath content="M4 25C3 16 7 9 17 6C17 16 12 23 4 25Z" fill="#b8e3d0" opacity="0.74" rotate="-22.8" scaleX="0.85" scaleY="0.85" stroke="#087a50" strokeWidth="1.2" translateX="-6.0" translateY="2.0" />
+                     </children>
+                  </StackPane>
+                  <VBox alignment="CENTER_LEFT" prefWidth="894.0" spacing="4.0">
+                     <children>
+                        <Label style="-fx-text-fill: #1B5E20; -fx-font-size: 22px; -fx-font-weight: bold;" text="Good Morning!">
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                        <Label style="-fx-text-fill: #355E4C; -fx-font-size: 12px;" text="Here's an overview of your finances." wrapText="true">
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <StackPane fx:id="greetingIllustration" alignment="CENTER_RIGHT" prefHeight="101.0" prefWidth="171.0">
+                     <children>
+                        <SVGPath content="M58 100C48 88 27 76 13 55C2 38 1 20 2 5C25 10 43 22 54 42C60 52 63 65 64 79C64 48 72 17 108 2C115 30 108 57 88 76C76 88 67 96 65 100ZM58 100C55 80 47 62 34 48C30 68 39 88 58 100ZM58 100C62 78 64 61 64 45" fill="#a8dcc5" opacity="0.5" rotate="21.4" scaleX="1.8" scaleY="0.8" stroke="TRANSPARENT" translateY="15.0" />
+                     </children>
+                  </StackPane>
+               </children>
+            </HBox>
+            <GridPane fx:id="summaryCards" alignment="CENTER_LEFT" hgap="14.0" maxWidth="1.7976931348623157E308" minWidth="0.0" prefHeight="130.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <VBox alignment="CENTER_LEFT" prefHeight="120.0" prefWidth="260.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-border-color: #CDE5D3; -fx-border-radius: 10; -fx-padding: 8; -fx-spacing: 0; -fx-pref-height: 120px;">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <StackPane prefHeight="46.0" prefWidth="40.0">
+                                 <children>
+                                    <Circle fill="#e4f5ee" radius="23.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                    <SVGPath content="M20 7H5A2 2 0 0 0 3 9V19A2 2 0 0 0 5 21H20A1 1 0 0 0 21 20V8A1 1 0 0 0 20 7ZM3 9V6A2 2 0 0 1 5 4H18M16 13H21M16 13A1 1 0 1 0 16 15A1 1 0 0 0 16 13" fill="TRANSPARENT" stroke="#1b5e20" strokeWidth="2.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="3.0" />
+                                 </padding>
+                              </StackPane>
+                              <Label style="-fx-text-fill: #64748B; -fx-font-size: 13px;" text="Total Liabilities" />
+                           </children>
+                        </HBox>
+                        <Label style="-fx-text-fill: #1B5E20; -fx-font-size: 22px; -fx-font-weight: bold;" text="₱0.00">
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding></Label>
+                        <Label style="-fx-text-fill: #2E7D32;" text="↑ 12.5% from last month" wrapText="true">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER_LEFT" prefHeight="120.0" prefWidth="260.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-border-color: #CDE5D3; -fx-padding: 8; -fx-spacing: 0; -fx-border-radius: 10; -fx-pref-height: 120;" GridPane.columnIndex="1">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <StackPane prefHeight="46.0" prefWidth="40.0">
+                                 <children>
+                                    <Circle fill="#e4f5ee" radius="23.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                    <SVGPath content="M12 3C8 3 5 4.3 5 6S8 9 12 9S19 7.7 19 6S16 3 12 3ZM5 6V10C5 12 8 13 12 13M19 6V9M5 10C5 12 8 13 12 13M5 14C5 16 8 17 12 17M5 14V18C5 20 8 21 12 21S19 19.7 19 18V14M12 13C16 13 19 11.7 19 10" fill="TRANSPARENT" stroke="#1b5e20" strokeWidth="2.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="3.0" />
+                                 </padding>
+                              </StackPane>
+                              <Label style="-fx-text-fill: #64748B; -fx-font-size: 13px;" text="Total Assets" />
+                           </children>
+                        </HBox>
+                        <Label style="-fx-text-fill: #1B5E20; -fx-font-size: 22px; -fx-font-weight: bold;" text="₱0.00">
+                           <padding>
+                              <Insets left="45.0" />
+                           </padding></Label>
+                        <Label style="-fx-text-fill: #2E7D32;" text="↑ 12.5% from last month" wrapText="true">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER_LEFT" prefHeight="120.0" prefWidth="260.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #CDE5D3; -fx-background-radius: 10; -fx-border-radius: 10; -fx-padding: 8;" GridPane.columnIndex="2">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <StackPane prefHeight="46.0" prefWidth="40.0">
+                                 <children>
+                                    <Circle fill="#e4f5ee" radius="23.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                    <SVGPath content="M3 19H21M5 16L10 11L13 14L20 6M15 6H20V11" fill="TRANSPARENT" stroke="#1b5e20" strokeWidth="2.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="3.0" />
+                                 </padding>
+                              </StackPane>
+                              <Label style="-fx-text-fill: #64748B; -fx-font-size: 13px;" text="Total Equity" />
+                           </children>
+                        </HBox>
+                        <Label style="-fx-font-weight: bold; -fx-font-size: 22px; -fx-text-fill: #1B5E20;" text="₱0.00">
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </Label>
+                        <Label style="-fx-text-fill: #2E7D32;" text="↑ 12.5% from last month" wrapText="true">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER_LEFT" prefHeight="120.0" prefWidth="260.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-border-color: #CDE5D3; -fx-border-radius: 10; -fx-padding: 8;" GridPane.columnIndex="3">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <StackPane prefHeight="46.0" prefWidth="40.0">
+                                 <children>
+                                    <Circle fill="#e4f5ee" radius="23.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                    <SVGPath content="M4 19H20M6 16V12H9V16M11 16V8H14V16M16 16V4H19V16M4 8L9 5L13 7L19 3" fill="TRANSPARENT" stroke="#1b5e20" strokeWidth="2.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="3.0" />
+                                 </padding>
+                              </StackPane>
+                              <Label style="-fx-text-fill: #64748B; -fx-font-size: 13px;" text="Total Revenue" />
+                           </children>
+                        </HBox>
+                        <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #1B5E20;" text="₱0.00">
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </Label>
+                        <Label style="-fx-text-fill: #2E7D32;" text="↑ 12.5% from last month" wrapText="true">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets top="12.0" />
+               </padding>
+            </GridPane>
+            <FlowPane fx:id="analyticsLayout" alignment="TOP_LEFT" columnHalignment="LEFT" hgap="10.0" maxWidth="1.7976931348623157E308" vgap="20.0">
+               <children>
+                  <VBox prefHeight="325.0" prefWidth="624.0" spacing="10.0" style="-fx-background-color: white; -fx-border-color: #CDE5D3; -fx-border-radius: 10;">
+                     <padding>
+                        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                     </padding>
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="250.0" spacing="10.0">
+                           <children>
+                              <Label style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #1B5E20;" text="Financial Overview" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                              <ComboBox prefWidth="125.0" promptText="This Month" style="-fx-background-color: white; -fx-border-color: #CDE5D3; -fx-background-radius: 7; -fx-border-radius: 7;" visibleRowCount="5" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="200.0" spacing="18.0">
+                           <children>
+                              <Circle fill="#087a50" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+                              <Label style="-fx-text-fill: #64748B;" text="Revenue">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                              </Label>
+                              <Circle fill="#8bcfb0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+                              <Label style="-fx-text-fill: #64748B;" text="Expenses">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets right="28.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <LineChart alternativeColumnFillVisible="true" animated="false" legendVisible="false" prefHeight="210.0" prefWidth="610.0" verticalGridLinesVisible="false">
+                          <xAxis>
+                            <CategoryAxis label="Month" side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis label="Amount (₱)" side="LEFT" />
+                          </yAxis>
+                        </LineChart>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="325.0" prefWidth="292.0" spacing="10.0" style="-fx-padding: 16; -fx-background-color: #FFFFFF; -fx-border-color: #CDE5D3; -fx-border-radius: 10;">
+                     <children>
+                        <Label style="-fx-text-fill: #1B5E20; -fx-font-weight: bold;" text="Income vs Expenses">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Circle fill="#e4f5ee" radius="100.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                           </children>
+                        </HBox>
+                        <StackPane prefHeight="190.0" prefWidth="310.0" style="-fx-background-color: transparent;" />
+                        <VBox prefHeight="23.0" prefWidth="317.0" spacing="14.0" style="-fx-padding: 5;">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="210.0" spacing="15.0">
+                                 <children>
+                                    <Circle fill="#087a50" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+                                    <Label prefHeight="16.0" prefWidth="41.0" style="-fx-text-fill: #64748B;" text="Income">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font>
+                                    </Label>
+                                    <Region prefHeight="18.0" prefWidth="18.0" />
+                                    <Label alignment="CENTER" style="-fx-font-weight: bold;" text="00%" />
+                                    <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="63.0" style="-fx-font-weight: bold;" text="₱ 000.00" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                                 <children>
+                                    <Circle fill="#8bcfb0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+                                    <Label style="-fx-text-fill: #64748B;" text="Expenses">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font>
+                                    </Label>
+                                    <Region prefHeight="18.0" prefWidth="29.0" />
+                                    <Label style="-fx-font-weight: bold;" text="00%" />
+                                    <Label style="-fx-font-weight: bold;" text="₱ 000.00" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="305.0" prefWidth="320.0" spacing="10.0" style="-fx-padding: 14; -fx-background-color: #FFFFFF; -fx-border-color: #DCEFE7; -fx-border-radius: 10;">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="264.0" spacing="10.0">
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="127.0" style="-fx-font-weight: bold; -fx-text-fill: #104D32;" text="Recent Activity">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Region prefHeight="26.0" prefWidth="86.0" />
+                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="55.0" style="-fx-text-fill: #087A50; -fx-background-color: transparent; -fx-font-weight: bold; -fx-padding: 2;" text="View All">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <StackPane prefHeight="43.0" prefWidth="62.0">
+                                 <children>
+                                    <Circle fill="#e4f5ee" radius="18.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                    <SVGPath content="M7 2 H15 L21 8 V22 H7 ZM15 2 V8 H21M11 13 H17M11 17 H17" fill="TRANSPARENT" scaleX="0.8" scaleY="0.8" stroke="#087a50" strokeWidth="2.0" />
+                                 </children>
+                              </StackPane>
+                              <VBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="48.0" prefWidth="266.0">
+                                 <children>
+                                    <Label style="-fx-text-fill: #104D32; -fx-font-weight: bold;" text="Journal Entry Created" />
+                                    <Label style="-fx-text-fill: #52718A;" text="Date - Time">
+                                       <font>
+                                          <Font size="10.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <Button focusTraversable="false" mnemonicParsing="false" style="-fx-background-color: transparent;" text="›">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="25.0" layoutY="61.0" prefHeight="48.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <StackPane prefHeight="43.0" prefWidth="69.0">
+                                 <children>
+                                    <Circle fill="#e4f5ee" radius="18.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                    <SVGPath content="M12 12 A4 4 0 1 0 12 4 A4 4 0 0 0 12 12M4 21 C4 17 7 14 12 14M19 14 L20 16 L22 16M20 16 V19M20 19 L18 20" fill="TRANSPARENT" scaleX="0.8" scaleY="0.8" stroke="#087a50" strokeWidth="2.0" />
+                                 </children>
+                              </StackPane>
+                              <VBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="48.0" prefWidth="266.0">
+                                 <children>
+                                    <Label style="-fx-text-fill: #104D32; -fx-font-weight: bold;" text="Account Updated" />
+                                    <Label style="-fx-text-fill: #52718A;" text="Date - Time">
+                                       <font>
+                                          <Font size="10.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <Button focusTraversable="false" mnemonicParsing="false" style="-fx-background-color: transparent;" text="›">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="25.0" layoutY="120.0" prefHeight="48.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <StackPane prefHeight="44.0" prefWidth="60.0">
+                                 <children>
+                                    <Circle fill="#e4f5ee" radius="18.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                    <SVGPath content="M5 3 H15 L20 8 V21 H5 ZM15 3 V8 H20M9 17 V13M13 17 V10M17 17 V14" fill="TRANSPARENT" scaleX="0.8" scaleY="0.8" stroke="#087a50" strokeWidth="2.0" />
+                                 </children>
+                              </StackPane>
+                              <VBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="48.0" prefWidth="266.0">
+                                 <children>
+                                    <Label style="-fx-text-fill: #104D32; -fx-font-weight: bold;" text="Report Generated" />
+                                    <Label style="-fx-text-fill: #52718A;" text="Date - Time">
+                                       <font>
+                                          <Font size="10.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <Button focusTraversable="false" mnemonicParsing="false" style="-fx-background-color: transparent;" text="›">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="25.0" layoutY="178.0" prefHeight="48.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <StackPane prefHeight="44.0" prefWidth="69.0">
+                                 <children>
+                                    <Circle fill="#e4f5ee" radius="18.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                    <SVGPath content="M12 5 V19M5 12 H19" fill="TRANSPARENT" scaleX="0.8" scaleY="0.8" stroke="#087a50" strokeWidth="2.0" />
+                                 </children>
+                              </StackPane>
+                              <VBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="48.0" prefWidth="266.0">
+                                 <children>
+                                    <Label style="-fx-text-fill: #104D32; -fx-font-weight: bold;" text="New Transaction" />
+                                    <Label style="-fx-text-fill: #52718A;" text="Date - Time">
+                                       <font>
+                                          <Font size="10.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <Button focusTraversable="false" mnemonicParsing="false" style="-fx-background-color: transparent;" text="›">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="25.0" layoutY="236.0" prefHeight="48.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <StackPane prefHeight="44.0" prefWidth="60.0">
+                                 <children>
+                                    <Circle fill="#e4f5ee" radius="18.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                    <SVGPath content="M6 18 H18 A4 4 0 0 0 18 10A6 6 0 0 0 6 9A4.5 4.5 0 0 0 6 18M12 18 V12M9 15 L12 12 L15 15" fill="TRANSPARENT" scaleX="0.8" scaleY="0.8" stroke="#087a50" strokeWidth="2.0" />
+                                 </children>
+                              </StackPane>
+                              <VBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="48.0" prefWidth="266.0">
+                                 <children>
+                                    <Label style="-fx-text-fill: #104D32; -fx-font-weight: bold;" text="Backup Completed" />
+                                    <Label style="-fx-text-fill: #52718A;" text="Date - Time">
+                                       <font>
+                                          <Font size="10.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <Button focusTraversable="false" mnemonicParsing="false" style="-fx-background-color: transparent;" text="›">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </FlowPane>
+            <GridPane fx:id="transactionLayout" hgap="15.0" maxWidth="1.7976931348623157E308" minWidth="0.0" vgap="15.0">
+               <children>
+                  <VBox prefHeight="291.0" prefWidth="878.0" spacing="14.0" style="-fx-padding: 18; -fx-background-color: #FFFFFF; -fx-border-color: #DCEFE7; -fx-border-width: 1; -fx-border-radius: 8; -fx-background-radius: 8;">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="24.0" spacing="10.0">
+                           <children>
+                              <Label style="-fx-text-fill: #104D32; -fx-font-size: 15px; -fx-font-weight: bold;" text="Recent Transactions" />
+                              <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                              <Button focusTraversable="false" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-padding: 2; -fx-cursor: hand; -fx-text-fill: #087A50; -fx-font-weight: bold;" text="View all">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <TableView fixedCellSize="36.0" focusTraversable="false" prefHeight="206.0" prefWidth="890.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #DCEFE7; -fx-border-radius: 5; -fx-background-radius: 5; fx-table-cell-border-color: #E8F3EE; fx-font-family: Arial; fx-font-size: 11px; fx-text-fill: #355E4C;">
+                          <columns>
+                            <TableColumn prefWidth="125.0" text="Date" />
+                            <TableColumn prefWidth="170.0" text="Description" />
+                              <TableColumn prefWidth="140.0" text="Category" />
+                              <TableColumn prefWidth="130.0" text="Type" />
+                              <TableColumn prefWidth="140.0" text="Amount" />
+                              <TableColumn prefWidth="120.0" text="Status" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="275.0" prefWidth="296.0" spacing="4.0" style="-fx-padding: 16; -fx-background-color: #FFFFFF; -fx-border-color: #DCEFE7; -fx-border-width: 1; -fx-border-radius: 10; -fx-background-radius: 10;">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="286.0" spacing="8.0">
+                           <children>
+                              <Label style="-fx-font-weight: bold; -fx-text-fill: #104D32;" text="Quick Actions">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <Button contentDisplay="TOP" graphicTextGap="6.0" maxWidth="1.7976931348623157E308" minHeight="96.0" minWidth="0.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="286.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #CDE5D3; -fx-border-width: 1; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 6 10 6 10; -fx-cursor: hand; -fx-text-fill: #52718A;" text="New Journal Entry" textAlignment="CENTER" wrapText="true" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                                 <graphic>
+                                    <StackPane prefHeight="34.0" prefWidth="82.0">
+                                       <children>
+                                          <SVGPath content="M14 2H6A2 2 0 0 0 4 4V20A2 2 0 0 0 6 22H18A2 2 0 0 0 20 20V8ZM14 2V8H20M12 11V17M9 14H15" fill="TRANSPARENT" stroke="#1b5e20" strokeWidth="2.0" />
+                                       </children>
+                                    </StackPane>
+                                 </graphic>
+                              </Button>
+                              <Button contentDisplay="TOP" graphicTextGap="6.0" layoutX="10.0" layoutY="39.0" maxWidth="1.7976931348623157E308" minHeight="96.0" minWidth="0.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="286.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #CDE5D3; -fx-border-width: 1; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 6 10 6 10; -fx-cursor: hand; -fx-text-fill: #52718A;" text="Generate Report" textAlignment="CENTER" wrapText="true" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                                 <graphic>
+                                    <StackPane prefHeight="36.0" prefWidth="124.0">
+                                       <children>
+                                          <SVGPath content="M3 19H21M5 17V11H9V17M11 17V7H15V17M17 17V3H21V17M4 8L9 5L13 7L20 2" fill="TRANSPARENT" layoutX="60.0" layoutY="18.0" stroke="#1b5e20" strokeWidth="2.0" />
+                                       </children>
+                                    </StackPane>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <Button contentDisplay="TOP" graphicTextGap="6.0" maxWidth="1.7976931348623157E308" minHeight="96.0" minWidth="0.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="286.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #CDE5D3; -fx-border-width: 1; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 6 10 6 10; -fx-cursor: hand; -fx-text-fill: #52718A;" text="Add Account" textAlignment="CENTER" wrapText="true" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                                 <graphic>
+                                    <StackPane prefHeight="39.0" prefWidth="149.0">
+                                       <children>
+                                          <SVGPath content="M16 21V19A4 4 0 0 0 12 15H7A4 4 0 0 0 3 19V21M9.5 11A4 4 0 1 0 9.5 3A4 4 0 0 0 9.5 11ZM19 8V14M16 11H22" fill="TRANSPARENT" stroke="#1b5e20" strokeWidth="2.0" />
+                                       </children>
+                                    </StackPane>
+                                 </graphic>
+                              </Button>
+                              <Button contentDisplay="TOP" graphicTextGap="6.0" layoutX="10.0" layoutY="39.0" maxWidth="1.7976931348623157E308" minHeight="96.0" minWidth="0.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="286.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #CDE5D3; -fx-border-width: 1; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 6 10 6 10; -fx-cursor: hand; -fx-text-fill: #52718A;" text="View Accounts" textAlignment="CENTER" wrapText="true" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                                 <graphic>
+                                    <StackPane prefHeight="37.0" prefWidth="112.0">
+                                       <children>
+                                          <SVGPath content="M12 7V21M12 7C10 5 7 4 3 4V18C7 18 10 19 12 21M12 7C14 5 17 4 21 4V18C17 18 14 19 12 21" fill="TRANSPARENT" stroke="#1b5e20" strokeWidth="2.0" />
+                                       </children>
+                                    </StackPane>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </GridPane>
+            <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="1190.0" spacing="4.0">
+               <children>
+                  <StackPane prefHeight="22.0" prefWidth="18.0">
+                     <children>
+                        <SVGPath content="M12 2A10 10 0 1 0 12 22A10 10 0 1 0 12 2ZM12 6V12L16 14" fill="TRANSPARENT" scaleX="0.6" scaleY="0.6" stroke="#087a50" strokeWidth="2.0" />
+                     </children>
+                  </StackPane>
+                  <Label style="-fx-text-fill: #52718A;" text="Last updated: Oct 31, 2025 10:24 AM" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>
